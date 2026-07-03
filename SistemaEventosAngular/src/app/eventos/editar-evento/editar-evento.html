@@ -1,1 +1,34 @@
-<p>editar-evento works!</p>
+<div class="content-header">
+  <h2 class="page-title">Editar Evento</h2>
+</div>
+
+<div class="card-table" style="padding: 24px;">
+  <form (ngSubmit)="guardar()" #eventoForm="ngForm">
+    <div style="margin-bottom: 15px;">
+      <label>Nombre:</label>
+      <input class="custom-table" style="padding: 10px; width: 100%;" [(ngModel)]="evento.nombre" name="nombre" required />
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+      <label>Descripción:</label>
+      <textarea class="custom-table" style="padding: 10px; width: 100%;" [(ngModel)]="evento.descripcion" name="descripcion"></textarea>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Fecha:</label>
+      <input class="custom-table" style="padding: 10px; width: 100%;" [(ngModel)]="evento.fecha" name="fecha" type="date" required />
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Ubicación:</label>
+      <input class="custom-table" style="padding: 10px; width: 100%;" [(ngModel)]="evento.ubicacion" name="ubicacion" required />
+    </div>
+
+    <button type="submit" class="btn btn-new" [disabled]="!eventoForm.valid">
+      <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+    </button>
+    <button type="button" class="btn btn-details" routerLink="/eventos" style="margin-left: 10px;">
+      Cancelar
+    </button>
+  </form>
+</div>

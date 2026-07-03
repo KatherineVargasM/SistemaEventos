@@ -37,9 +37,11 @@
     </button>
     
 
-    <button class="btn-action btn-delete" (click)="eliminarEvento(evento.eventoId)">
-      <i class="fa-solid fa-trash-can"></i> Eliminar
-    </button>
+    <button class="btn-action btn-delete"
+        [routerLink]="['/eventos/eliminar', evento.eventoId]">
+    <i class="fa-solid fa-trash-can"></i>
+    Eliminar
+</button>
   </div>
 </td>
       </tr>

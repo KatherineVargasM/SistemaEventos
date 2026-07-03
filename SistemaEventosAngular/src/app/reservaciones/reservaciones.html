@@ -1,0 +1,107 @@
+<div class="content-header">
+
+<h2 class="page-title">
+
+Gestión de Reservaciones
+
+</h2>
+
+<button
+class="btn btn-new"
+routerLink="/reservaciones/crear">
+
+<i class="fa-solid fa-plus"></i>
+
+Nueva Reservación
+
+</button>
+
+</div>
+
+<div class="card-table">
+
+<table class="custom-table">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Evento</th>
+
+<th>Cliente</th>
+
+<th>Fecha</th>
+
+<th>Estado</th>
+
+<th class="text-center">
+
+Acciones
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr *ngFor="let reservacion of reservaciones$ | async">
+
+<td>{{reservacion.reservacionId}}</td>
+
+<td>{{reservacion.evento?.nombre}}</td>
+
+<td>{{reservacion.cliente?.nombre}}</td>
+
+<td>{{reservacion.fechaReservacion | date:'mediumDate'}}</td>
+
+<td>{{reservacion.estado}}</td>
+
+<td class="text-center">
+
+<div class="action-buttons">
+
+<button
+class="btn-action btn-details"
+[routerLink]="['/reservaciones/detalles', reservacion.reservacionId]">
+
+<i class="fa-solid fa-eye"></i>
+
+Detalles
+
+</button>
+
+<button
+class="btn-action btn-edit"
+[routerLink]="['/reservaciones/editar', reservacion.reservacionId]">
+
+<i class="fa-solid fa-pen"></i>
+
+Editar
+
+</button>
+
+<button
+class="btn-action btn-delete"
+[routerLink]="['/reservaciones/eliminar', reservacion.reservacionId]">
+
+<i class="fa-solid fa-trash"></i>
+
+Eliminar
+
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>

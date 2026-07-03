@@ -1,1 +1,19 @@
-<p>detalles-evento works!</p>
+<div class="content-header">
+  <h2 class="page-title">Detalles del Evento</h2>
+  <button class="btn btn-details" routerLink="/eventos">
+    <i class="fa-solid fa-arrow-left"></i> Volver
+  </button>
+</div>
+
+<div class="card-table" style="padding: 24px;" *ngIf="evento">
+  <h3>{{ evento.nombre }}</h3>
+  <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+  <p><strong>Fecha:</strong> {{ evento.fecha | date:'fullDate' }}</p>
+  <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+  
+  <div class="action-buttons" style="justify-content: flex-start; margin-top: 20px;">
+    <button class="btn btn-action btn-edit" [routerLink]="['/eventos/editar', evento.eventoId]">
+      <i class="fa-solid fa-pen-to-square"></i> Editar
+    </button>
+  </div>
+</div>

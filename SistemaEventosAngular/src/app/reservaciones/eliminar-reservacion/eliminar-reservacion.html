@@ -1,0 +1,75 @@
+<div class="content-header">
+
+    <h2 class="page-title">
+        Eliminar Reservación
+    </h2>
+
+</div>
+
+<div class="card-table">
+
+    <div class="warning-box">
+
+        <strong>⚠ Atención</strong>
+
+        <br><br>
+
+        ¿Está seguro de eliminar esta reservación?
+
+    </div>
+
+    <div class="info-item">
+
+        <label>Evento</label>
+
+        <p>{{ reservacion.evento?.nombre }}</p>
+
+    </div>
+
+    <div class="info-item">
+
+        <label>Cliente</label>
+
+        <p>{{ reservacion.cliente?.nombre }}</p>
+
+    </div>
+
+    <div class="info-item">
+
+        <label>Fecha</label>
+
+        <p>{{ reservacion.fechaReservacion | date:'fullDate' }}</p>
+
+    </div>
+
+    <div class="info-item">
+
+        <label>Estado</label>
+
+        <p>{{ reservacion.estado }}</p>
+
+    </div>
+
+    <div class="form-actions">
+
+        <button
+            class="btn btn-delete"
+            (click)="eliminar()">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Eliminar
+
+        </button>
+
+        <button
+            class="btn btn-cancel"
+            routerLink="/reservaciones">
+
+            Cancelar
+
+        </button>
+
+    </div>
+
+</div>

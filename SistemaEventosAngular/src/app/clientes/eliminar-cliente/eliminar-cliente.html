@@ -1,0 +1,53 @@
+<div class="content-header">
+<h2 class="page-title">Eliminar Cliente</h2>
+</div>
+
+<div class="card-table">
+
+<div class="warning-box">
+
+¿Está seguro que desea eliminar este cliente?
+
+</div>
+
+<div class="info-item">
+<label>Nombre</label>
+<p>{{cliente.nombre}}</p>
+</div>
+
+<div class="info-item">
+<label>Cédula</label>
+<p>{{cliente.cedula}}</p>
+</div>
+
+<div class="info-item">
+<label>Teléfono</label>
+<p>{{cliente.telefono}}</p>
+</div>
+
+<div class="info-item">
+<label>Correo</label>
+<p>{{cliente.correo}}</p>
+</div>
+
+<div class="form-actions">
+
+<button
+class="btn btn-delete"
+(click)="eliminar()">
+
+Eliminar
+
+</button>
+
+<button
+class="btn btn-cancel"
+routerLink="/clientes">
+
+Cancelar
+
+</button>
+
+</div>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="content-header">
+    <h2 class="page-title">Eliminar Evento</h2>
+</div>
+
+<div class="card-table">
+
+    <div class="warning-box">
+        <strong>Atención</strong><br>
+        ¿Está seguro de que desea eliminar este evento?
+    </div>
+
+    <div class="info-item">
+        <label>Nombre</label>
+        <p>{{ evento.nombre }}</p>
+    </div>
+
+    <div class="info-item">
+        <label>Descripción</label>
+        <p>{{ evento.descripcion }}</p>
+    </div>
+
+    <div class="info-item">
+        <label>Fecha</label>
+        <p>{{ evento.fecha | date:'fullDate' }}</p>
+    </div>
+
+    <div class="info-item">
+        <label>Ubicación</label>
+        <p>{{ evento.ubicacion }}</p>
+    </div>
+
+    <div class="form-actions">
+
+        <button class="btn btn-delete" (click)="eliminar()">
+            <i class="fa-solid fa-trash"></i>
+            Eliminar
+        </button>
+
+        <button class="btn btn-cancel" routerLink="/eventos">
+            <i class="fa-solid fa-arrow-left"></i>
+            Cancelar
+        </button>
+
+    </div>
+
+</div>

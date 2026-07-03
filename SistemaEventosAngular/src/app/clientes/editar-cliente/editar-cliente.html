@@ -1,0 +1,56 @@
+<div class="content-header">
+<h2 class="page-title">Editar Cliente</h2>
+</div>
+
+<div class="card-table">
+
+<form (ngSubmit)="guardar()">
+
+<div class="form-group">
+<label>Nombre</label>
+<input class="form-control"
+[(ngModel)]="cliente.nombre"
+name="nombre">
+</div>
+
+<div class="form-group">
+<label>Cédula</label>
+<input class="form-control"
+[(ngModel)]="cliente.cedula"
+name="cedula">
+</div>
+
+<div class="form-group">
+<label>Teléfono</label>
+<input class="form-control"
+[(ngModel)]="cliente.telefono"
+name="telefono">
+</div>
+
+<div class="form-group">
+<label>Correo</label>
+<input class="form-control"
+[(ngModel)]="cliente.correo"
+name="correo">
+</div>
+
+<div class="form-actions">
+
+<button class="btn btn-new">
+Guardar
+</button>
+
+<button
+type="button"
+class="btn btn-details"
+routerLink="/clientes">
+
+Cancelar
+
+</button>
+
+</div>
+
+</form>
+
+</div>

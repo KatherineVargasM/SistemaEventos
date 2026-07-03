@@ -1,0 +1,69 @@
+<div class="content-header">
+    <h2 class="page-title">Nuevo Evento</h2>
+</div>
+
+<div class="card-table">
+
+<form (ngSubmit)="guardar()" #eventoForm="ngForm">
+
+<div class="form-group">
+<label>Nombre</label>
+<input
+class="form-control"
+[(ngModel)]="evento.nombre"
+name="nombre"
+required>
+</div>
+
+<div class="form-group">
+<label>Descripción</label>
+<textarea
+class="form-control"
+[(ngModel)]="evento.descripcion"
+name="descripcion"></textarea>
+</div>
+
+<div class="form-group">
+<label>Fecha</label>
+<input
+type="date"
+class="form-control"
+[(ngModel)]="evento.fecha"
+name="fecha"
+required>
+</div>
+
+<div class="form-group">
+<label>Ubicación</label>
+<input
+class="form-control"
+[(ngModel)]="evento.ubicacion"
+name="ubicacion"
+required>
+</div>
+
+<div class="form-actions">
+
+<button
+class="btn btn-new"
+type="submit">
+
+<i class="fa-solid fa-floppy-disk"></i>
+Guardar
+
+</button>
+
+<button
+type="button"
+class="btn btn-details"
+routerLink="/eventos">
+
+Cancelar
+
+</button>
+
+</div>
+
+</form>
+
+</div>

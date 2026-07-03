@@ -1,0 +1,51 @@
+<div class="content-header">
+
+    <h2 class="page-title">
+        Detalles de la Reservación
+    </h2>
+
+    <button
+        class="btn btn-details"
+        routerLink="/reservaciones">
+
+        Volver
+
+    </button>
+
+</div>
+
+<div class="card-table">
+
+    <div class="detalle">
+        <label>Evento</label>
+        <p>{{ reservacion.evento?.nombre }}</p>
+    </div>
+
+    <div class="detalle">
+        <label>Cliente</label>
+        <p>{{ reservacion.cliente?.nombre }}</p>
+    </div>
+
+    <div class="detalle">
+        <label>Fecha</label>
+        <p>{{ reservacion.fechaReservacion | date:'fullDate' }}</p>
+    </div>
+
+    <div class="detalle">
+        <label>Estado</label>
+        <p>{{ reservacion.estado }}</p>
+    </div>
+
+    <div class="action-buttons">
+
+        <button
+            class="btn btn-edit"
+            [routerLink]="['/reservaciones/editar', reservacion.reservacionId]">
+
+            Editar
+
+        </button>
+
+    </div>
+
+</div>

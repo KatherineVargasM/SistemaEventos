@@ -1,157 +1,96 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SistemaEventos.Models;
 using SistemaEventos.Data;
+using SistemaEventos.Models;
 
-public class EventoController : Controller
+namespace SistemaEventos.Controllers
 {
-    private readonly ApplicationDbContext _context;
-
-    public EventoController(ApplicationDbContext context)
+    [ApiController]
+    [Route("evento")]
+    public class EventoController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly ApplicationDbContext _context;
 
-    // GET: EVENTOS
-    public async Task<IActionResult> Index()    
-    {
-        return View(await _context.Eventos.ToListAsync());
-    }
-
-    // GET: EVENTOS/Details/5
-    public async Task<IActionResult> Details(int? eventoid)
-    {
-        if (eventoid == null)
+        public EventoController(ApplicationDbContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        var evento = await _context.Eventos
-            .FirstOrDefaultAsync(m => m.EventoId == eventoid);
-        if (evento == null)
+        // GET: /evento
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Evento>>> GetEventos()
         {
-            return NotFound();
+            return Ok(await _context.Eventos.ToListAsync());
         }
 
-        return View(evento);
-    }
-
-    // GET: EVENTOS/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: EVENTOS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("EventoId,Nombre,Descripcion,Fecha,Ubicacion")] Evento evento)
-    {
-        if (ModelState.IsValid)
+        // GET: /evento/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Evento>> GetEventoById(int id)
         {
-            _context.Add(evento);
+            var evento = await _context.Eventos.FindAsync(id);
+
+            if (evento == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(evento);
+        }
+
+        // POST: /evento
+        [HttpPost]
+        public async Task<ActionResult<Evento>> CreateEvento(Evento evento)
+        {
+            _context.Eventos.Add(evento);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(evento);
-    }
 
-    // GET: EVENTOS/Edit/5
-    public async Task<IActionResult> Edit(int? eventoid)
-    {
-        if (eventoid == null)
-        {
-            return NotFound();
+            return CreatedAtAction(nameof(GetEventoById),
+                new { id = evento.EventoId }, evento);
         }
 
-        var evento = await _context.Eventos.FindAsync(eventoid);
-        if (evento == null)
+        // PUT: /evento/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEvento(int id, Evento evento)
         {
-            return NotFound();
-        }
-        return View(evento);
-    }
+            if (id != evento.EventoId)
+            {
+                return BadRequest();
+            }
 
-    // POST: EVENTOS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? eventoid, [Bind("EventoId,Nombre,Descripcion,Fecha,Ubicacion")] Evento evento)
-    {
-        if (eventoid != evento.EventoId)
-        {
-            return NotFound();
-        }
+            _context.Entry(evento).State = EntityState.Modified;
 
-        if (ModelState.IsValid)
-        {
             try
             {
-                _context.Update(evento);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EventoExists(evento.EventoId))
+                if (!_context.Eventos.Any(e => e.EventoId == id))
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
-            return RedirectToAction(nameof(Index));
-        }
-        return View(evento);
-    }
 
-    // GET: EVENTOS/Delete/5
-    public async Task<IActionResult> Delete(int? eventoid)
-    {
-        if (eventoid == null)
-        {
-            return NotFound();
+            return NoContent();
         }
 
-        var evento = await _context.Eventos
-            .FirstOrDefaultAsync(m => m.EventoId == eventoid);
-        if (evento == null)
+        // DELETE: /evento/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEvento(int id)
         {
-            return NotFound();
-        }
+            var evento = await _context.Eventos.FindAsync(id);
 
-        return View(evento);
-    }
+            if (evento == null)
+            {
+                return NotFound();
+            }
 
-    // POST: EVENTOS/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? eventoid)
-    {
-        var evento = await _context.Eventos.FindAsync(eventoid);
-        if (evento != null)
-        {
             _context.Eventos.Remove(evento);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
-
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
-    }
-
-    private bool EventoExists(int? eventoid)
-    {
-        return _context.Eventos.Any(e => e.EventoId == eventoid);
-    }
-
-    [HttpGet]
-    [Route("evento")]
-    public async Task<ActionResult<IEnumerable<Evento>>> GetEventos()
-    {
-        return Ok(await _context.Eventos.ToListAsync());
     }
 }

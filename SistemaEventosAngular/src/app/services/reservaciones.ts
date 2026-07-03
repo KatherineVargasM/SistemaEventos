@@ -3,8 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reservacion } from '../interfaces/reservacion';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ReservacionesService {
+
   private apiUrl = 'https://localhost:7115/reservacion';
 
   constructor(private http: HttpClient) {}
@@ -13,13 +16,23 @@ export class ReservacionesService {
     return this.http.get<Reservacion[]>(this.apiUrl);
   }
 
+  getReservacionById(id: number): Observable<Reservacion> {
+    return this.http.get<Reservacion>(`${this.apiUrl}/${id}`);
+  }
+
   createReservacion(reservacion: Reservacion): Observable<Reservacion> {
     return this.http.post<Reservacion>(this.apiUrl, reservacion);
+  }
+
+  updateReservacion(reservacion: Reservacion): Observable<void> {
+    return this.http.put<void>(
+      `${this.apiUrl}/${reservacion.reservacionId}`,
+      reservacion
+    );
   }
 
   deleteReservacion(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  
 }

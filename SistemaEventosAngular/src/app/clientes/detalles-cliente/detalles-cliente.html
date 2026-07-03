@@ -1,0 +1,45 @@
+<div class="content-header">
+<h2 class="page-title">Detalles del Cliente</h2>
+
+<button class="btn btn-details"
+routerLink="/clientes">
+Volver
+</button>
+
+</div>
+
+<div class="card-table">
+
+<div class="detalle">
+<label>Nombre</label>
+<p>{{cliente.nombre}}</p>
+</div>
+
+<div class="detalle">
+<label>Cédula</label>
+<p>{{cliente.cedula}}</p>
+</div>
+
+<div class="detalle">
+<label>Teléfono</label>
+<p>{{cliente.telefono}}</p>
+</div>
+
+<div class="detalle">
+<label>Correo</label>
+<p>{{cliente.correo}}</p>
+</div>
+
+<div class="action-buttons">
+
+<button
+class="btn btn-edit"
+[routerLink]="['/clientes/editar',cliente.clienteId]">
+
+Editar
+
+</button>
+
+</div>
+
+</div>

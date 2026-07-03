@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-editar-evento',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './editar-evento.html'
+  templateUrl: './editar-evento.html',
+  styleUrl: './editar-evento.css'
 })
 export class EditarEventoComponent implements OnInit {
   evento: Evento = { eventoId: 0, nombre: '', descripcion: '', fecha: '', ubicacion: '' };

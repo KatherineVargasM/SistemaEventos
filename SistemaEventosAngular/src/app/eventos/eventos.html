@@ -1,0 +1,89 @@
+<div class="content-header">
+
+    <h2 class="page-title">
+        Gestión de Eventos
+    </h2>
+
+    <button
+        class="btn btn-new"
+        routerLink="/eventos/crear">
+
+        <i class="fa-solid fa-plus"></i>
+        Nuevo Evento
+
+    </button>
+
+</div>
+
+<div class="card-table">
+
+<table class="custom-table">
+
+<thead>
+
+<tr>
+
+<th>Nombre</th>
+<th>Fecha</th>
+<th>Ubicación</th>
+<th class="text-center">Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr *ngFor="let evento of eventos$ | async">
+
+<td>{{evento.nombre}}</td>
+
+<td>{{evento.fecha | date:'mediumDate'}}</td>
+
+<td>{{evento.ubicacion}}</td>
+
+<td class="text-center">
+
+<div class="action-buttons">
+
+<button
+class="btn-action btn-details"
+[routerLink]="['/eventos/detalles',evento.eventoId]">
+
+<i class="fa-solid fa-eye"></i>
+
+Detalles
+
+</button>
+
+<button
+class="btn-action btn-edit"
+[routerLink]="['/eventos/editar',evento.eventoId]">
+
+<i class="fa-solid fa-pen"></i>
+
+Editar
+
+</button>
+
+<button
+class="btn-action btn-delete"
+[routerLink]="['/eventos/eliminar',evento.eventoId]">
+
+<i class="fa-solid fa-trash"></i>
+
+Eliminar
+
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>

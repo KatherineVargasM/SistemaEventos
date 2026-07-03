@@ -17,6 +17,7 @@ export class ListaEventosComponent implements OnInit {
 
   constructor(private eventosService: EventosService) {}
 
+
   ngOnInit(): void {
     this.eventos$ = this.eventosService.getEventos();
   }

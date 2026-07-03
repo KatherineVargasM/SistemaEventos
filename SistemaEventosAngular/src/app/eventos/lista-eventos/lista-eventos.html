@@ -24,19 +24,24 @@
             <i class="fa-solid fa-location-dot"></i> {{ evento.ubicacion }}
           </span>
         </td>
-        <td class="text-center">
-          <div class="action-buttons">
-            <button class="btn-action btn-details" [routerLink]="['/eventos/detalles', evento.eventoId]">
-              <i class="fa-solid fa-eye"></i> Detalles
-            </button>
-            <button class="btn-action btn-edit" [routerLink]="['/eventos/editar', evento.eventoId]">
-              <i class="fa-solid fa-pen-to-square"></i> Editar
-            </button>
-            <button class="btn-action btn-delete" (click)="eliminarEvento(evento.eventoId)">
-              <i class="fa-solid fa-trash-can"></i> Eliminar
-            </button>
-          </div>
-        </td>
+       <td class="text-center">
+  <div class="action-buttons">
+
+    <button class="btn-action btn-details" [routerLink]="['/eventos/detalles', evento.eventoId]">
+      <i class="fa-solid fa-eye"></i> Detalles
+    </button>
+    
+ 
+    <button class="btn-action btn-edit" [routerLink]="['/eventos/editar', evento.eventoId]">
+      <i class="fa-solid fa-pen-to-square"></i> Editar
+    </button>
+    
+
+    <button class="btn-action btn-delete" (click)="eliminarEvento(evento.eventoId)">
+      <i class="fa-solid fa-trash-can"></i> Eliminar
+    </button>
+  </div>
+</td>
       </tr>
     </tbody>
   </table>

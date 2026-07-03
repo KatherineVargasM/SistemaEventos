@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\USER25\\Documents\\Aplicaciones WEB\\SistemaEventos_KV\\SistemaEventos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|c:\\users\\user25\\documents\\aplicaciones web\\sistemaeventos_kv\\sistemaeventos\\controllers\\reservacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|solutionrelative:controllers\\reservacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|c:\\users\\user25\\documents\\aplicaciones web\\sistemaeventos_kv\\sistemaeventos\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|c:\\users\\user25\\documents\\aplicaciones web\\sistemaeventos_kv\\sistemaeventos\\controllers\\reservacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|solutionrelative:controllers\\reservacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C2D86E2-B992-246C-CF27-A4D10F4A2206}|SistemaEventos.csproj|c:\\users\\user25\\documents\\aplicaciones web\\sistemaeventos_kv\\sistemaeventos\\controllers\\eventocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 328,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,13 +46,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ClienteController.cs",
               "DocumentMoniker": "C:\\Users\\USER25\\Documents\\Aplicaciones WEB\\SistemaEventos_KV\\SistemaEventos\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
               "ToolTip": "C:\\Users\\USER25\\Documents\\Aplicaciones WEB\\SistemaEventos_KV\\SistemaEventos\\Controllers\\ClienteController.cs",
               "RelativeToolTip": "Controllers\\ClienteController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAJQAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAwAUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-03T03:21:57.604Z",
               "EditorCaption": ""
@@ -67,12 +67,11 @@
               "RelativeToolTip": "Controllers\\EventoController.cs",
               "ViewState": "AgIAAH0AAAAAAAAAAAAgwIcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T03:18:53.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-03T03:18:53.73Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ReservacionController.cs",
               "DocumentMoniker": "C:\\Users\\USER25\\Documents\\Aplicaciones WEB\\SistemaEventos_KV\\SistemaEventos\\Controllers\\ReservacionController.cs",
               "RelativeDocumentMoniker": "Controllers\\ReservacionController.cs",
@@ -93,8 +92,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwCoAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T02:32:35.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-03T02:32:35.629Z"
             },
             {
               "$type": "Document",

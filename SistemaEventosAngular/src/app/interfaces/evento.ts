@@ -2,6 +2,6 @@ export interface Evento {
   eventoId: number;
   nombre: string;
   descripcion: string;
-  fecha: Date;
+  fecha: string;
   ubicacion: string;
 }

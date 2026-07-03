@@ -1,0 +1,17 @@
+<h2>Lista de Eventos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Ubicación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let evento of eventos">
+      <td>{{ evento.nombre }}</td>
+      <td>{{ evento.fecha | date:'shortDate' }}</td>
+      <td>{{ evento.ubicacion }}</td>
+    </tr>
+  </tbody>
+</table>

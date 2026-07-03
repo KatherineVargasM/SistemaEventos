@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>Sistema de Eventos</h1>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/eventos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Eventos
+        </a>
+      </li>
+      <li>
+        <a routerLink="/reservar" routerLinkActive="active">
+          Nueva Reservación
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

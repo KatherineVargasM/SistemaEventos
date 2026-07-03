@@ -149,6 +149,7 @@ public class EventoController : Controller
     }
 
     [HttpGet]
+    [Route("evento")]
     public async Task<ActionResult<IEnumerable<Evento>>> GetEventos()
     {
         return Ok(await _context.Eventos.ToListAsync());

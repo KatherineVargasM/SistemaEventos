@@ -1,47 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
 import { ReservacionesService } from '../../services/reservaciones';
-import { EventosService } from '../../services/eventos';
-import { ClientesService } from '../../services/clientes';
-import { Evento } from '../../interfaces/evento';
-import { Cliente } from '../../interfaces/cliente';
+import { Reservacion } from '../../interfaces/reservacion';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-crear-reservacion',
+  selector: 'app-reservaciones',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './crear-reservacion.html'
+  imports: [CommonModule, RouterModule],
+  templateUrl: './crear-reservacion.html',
+  styleUrl: './crear-reservacion.css'
 })
-export class CrearReservacionComponent implements OnInit {
-  reservacionForm: FormGroup;
-  eventos: Evento[] = [];
-  clientes: Cliente[] = [];
+export class ReservacionesComponent implements OnInit {
+  reservaciones$!: Observable<Reservacion[]>;
 
-  constructor(
-    private fb: FormBuilder, 
-    private reservacionesService: ReservacionesService,
-    private eventosService: EventosService,
-    private clientesService: ClientesService
-  ) {
-    this.reservacionForm = this.fb.group({
-      eventoId: ['', Validators.required],
-      clienteId: ['', Validators.required],
-      estado: ['Confirmada']
-    });
-  }
+  constructor(private reservacionesService: ReservacionesService) {}
 
   ngOnInit(): void {
-
-    this.eventosService.getEventos().subscribe(data => this.eventos = data);
-    this.clientesService.getClientes().subscribe(data => this.clientes = data);
+    this.reservaciones$ = this.reservacionesService.getReservaciones();
   }
 
-  onSubmit() {
-    if (this.reservacionForm.valid) {
-      this.reservacionesService.createReservacion(this.reservacionForm.value).subscribe(() => {
-        alert('Reservación creada correctamente');
-        this.reservacionForm.reset();
+  eliminarReservacion(id: number): void {
+    if (confirm('¿Estás seguro de cancelar esta reservación?')) {
+      this.reservacionesService.deleteReservacion(id).subscribe(() => {
+        this.reservaciones$ = this.reservacionesService.getReservaciones();
       });
     }
   }

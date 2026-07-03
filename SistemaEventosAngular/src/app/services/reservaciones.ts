@@ -16,4 +16,8 @@ export class ReservacionesService {
   createReservacion(reservacion: Reservacion): Observable<Reservacion> {
     return this.http.post<Reservacion>(this.apiUrl, reservacion);
   }
+
+  deleteReservacion(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

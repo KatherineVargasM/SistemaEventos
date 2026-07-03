@@ -1,25 +1,33 @@
-<h3>Nueva Reservación</h3>
-<form [formGroup]="reservacionForm" (ngSubmit)="onSubmit()">
-  
-  <div>
-    <label>Evento:</label>
-    <select formControlName="eventoId">
-      <option value="" disabled>Seleccione un evento</option>
-      <option *ngFor="let ev of eventos" [value]="ev.eventoId">
-        {{ ev.nombre }} - {{ ev.fecha | date:'shortDate' }}
-      </option>
-    </select>
-  </div>
-  
-  <div>
-    <label>Cliente:</label>
-    <select formControlName="clienteId">
-      <option value="" disabled>Seleccione un cliente</option>
-      <option *ngFor="let cli of clientes" [value]="cli.clienteId">
-        {{ cli.nombre }} {{ cli.apellido }}
-      </option>
-    </select>
-  </div>
+<div class="content-header">
+  <h2 class="page-title">Gestión de Reservaciones</h2>
+  <button class="btn btn-new" routerLink="/reservar">
+    <i class="fa-solid fa-calendar-plus"></i> Nueva Reservación
+  </button>
+</div>
 
-  <button type="submit" [disabled]="reservacionForm.invalid">Reservar</button>
-</form>
+<div class="card-table">
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Evento</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of reservaciones$ | async">
+        <td>{{ res.cliente.nombre }}</td>
+        <td>{{ res.evento.nombre }}</td>
+        <td>{{ res.fechaReservacion | date:'shortDate' }}</td>
+        <td>{{ res.estado }}</td>
+        <td class="text-center">
+          <button class="btn-action" (click)="eliminarReservacion(res.reservacionId)">
+            <i class="fa-solid fa-trash-can"></i> Cancelar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

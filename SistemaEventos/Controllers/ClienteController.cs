@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaEventos.Models;
@@ -14,7 +13,7 @@ public class ClienteController : Controller
     }
 
     // GET: CLIENTES
-    public async Task<IActionResult> Index()    
+    public async Task<IActionResult> Index()
     {
         return View(await _context.Clientes.ToListAsync());
     }
@@ -44,8 +43,6 @@ public class ClienteController : Controller
     }
 
     // POST: CLIENTES/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ClienteId,Nombre,Apellido,Email,Telefono")] Cliente cliente)
@@ -76,8 +73,6 @@ public class ClienteController : Controller
     }
 
     // POST: CLIENTES/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int? clienteid, [Bind("ClienteId,Nombre,Apellido,Email,Telefono")] Cliente cliente)
@@ -146,5 +141,23 @@ public class ClienteController : Controller
     private bool ClienteExists(int? clienteid)
     {
         return _context.Clientes.Any(e => e.ClienteId == clienteid);
+    }
+
+    [HttpGet]
+    [Route("cliente")]
+    public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+    {
+        return Ok(await _context.Clientes.ToListAsync());
+    }
+
+    [HttpDelete]
+    [Route("cliente/{id}")]
+    public async Task<IActionResult> DeleteCliente(int id)
+    {
+        var cliente = await _context.Clientes.FindAsync(id);
+        if (cliente == null) return NotFound();
+        _context.Clientes.Remove(cliente);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }

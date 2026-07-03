@@ -1,0 +1,41 @@
+<div class="content-header">
+  <h2 class="page-title">Gestión de Clientes</h2>
+  <button class="btn btn-new" routerLink="/clientes/crear">
+    <i class="fa-solid fa-user-plus"></i> Nuevo Cliente
+  </button>
+</div>
+
+<div class="card-table">
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cédula / RUC</th>
+        <th>Teléfono</th>
+        <th>Correo Electrónico</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes$ | async">
+  <td class="font-semibold">{{ cliente.nombre }}</td>
+  <td>{{ cliente.cedula }}</td>
+  <td>{{ cliente.telefono }}</td>
+  <td>{{ cliente.correo }}</td>
+  <td class="text-center">
+    <div class="action-buttons">
+      <button class="btn-action btn-details" [routerLink]="['/clientes/detalles', cliente.clienteId]">
+        <i class="fa-solid fa-eye"></i> Detalles
+      </button>
+      <button class="btn-action btn-edit" [routerLink]="['/clientes/editar', cliente.clienteId]">
+        <i class="fa-solid fa-pen-to-square"></i> Editar
+      </button>
+      <button class="btn-action btn-delete" (click)="eliminarCliente(cliente.clienteId)">
+        <i class="fa-solid fa-trash-can"></i> Eliminar
+      </button>
+    </div>
+  </td>
+</tr>
+    </tbody>
+  </table>
+</div>

@@ -1,23 +1,26 @@
-<header>
-  <nav class="navbar">
-    <div class="logo">
-      <h1>Sistema de Eventos</h1>
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a routerLink="/eventos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          Eventos
-        </a>
-      </li>
-      <li>
-        <a routerLink="/reservar" routerLinkActive="active">
-          Nueva Reservación
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>
+<div class="layout-container">
+  <header class="top-bar">
+    <div class="system-name">Gestión de Eventos</div>
+    <div class="user-profile">Katherine Vargas</div>
+  </header>
 
-<main class="container">
-  <router-outlet></router-outlet>
-</main>
+  <div class="main-content-wrapper">
+    <aside class="sidebar">
+      <nav class="menu-nav">
+        <a routerLink="/eventos" routerLinkActive="active-link" class="menu-btn">
+          <i class="fa-solid fa-calendar-days"></i> Eventos
+        </a>
+        <a routerLink="/clientes" routerLinkActive="active-link" class="menu-btn">
+          <i class="fa-solid fa-users"></i> Clientes
+        </a>
+        <a routerLink="/reservar" routerLinkActive="active-link" class="menu-btn">
+          <i class="fa-solid fa-book-bookmark"></i> Reservaciones
+        </a>
+      </nav>
+    </aside>
+
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

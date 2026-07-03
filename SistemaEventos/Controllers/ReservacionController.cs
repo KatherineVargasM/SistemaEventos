@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaEventos.Models;
@@ -14,7 +13,7 @@ public class ReservacionController : Controller
     }
 
     // GET: RESERVACIONS
-    public async Task<IActionResult> Index()    
+    public async Task<IActionResult> Index()
     {
         return View(await _context.Reservaciones.ToListAsync());
     }
@@ -44,11 +43,9 @@ public class ReservacionController : Controller
     }
 
     // POST: RESERVACIONS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ReservacionId,EventoId,Evento,ClienteId,Cliente,FechaReservacion,Estado")] Reservacion reservacion)
+    public async Task<IActionResult> Create([Bind("ReservacionId,EventoId,ClienteId,FechaReservacion,Estado")] Reservacion reservacion)
     {
         if (ModelState.IsValid)
         {
@@ -76,11 +73,9 @@ public class ReservacionController : Controller
     }
 
     // POST: RESERVACIONS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? reservacionid, [Bind("ReservacionId,EventoId,Evento,ClienteId,Cliente,FechaReservacion,Estado")] Reservacion reservacion)
+    public async Task<IActionResult> Edit(int? reservacionid, [Bind("ReservacionId,EventoId,ClienteId,FechaReservacion,Estado")] Reservacion reservacion)
     {
         if (reservacionid != reservacion.ReservacionId)
         {
@@ -146,5 +141,26 @@ public class ReservacionController : Controller
     private bool ReservacionExists(int? reservacionid)
     {
         return _context.Reservaciones.Any(e => e.ReservacionId == reservacionid);
+    }
+
+    [HttpGet]
+    [Route("reservacion")]
+    public async Task<ActionResult<IEnumerable<Reservacion>>> GetReservaciones()
+    {
+        return Ok(await _context.Reservaciones
+            .Include(r => r.Evento)
+            .Include(r => r.Cliente)
+            .ToListAsync());
+    }
+
+    [HttpDelete]
+    [Route("reservacion/{id}")]
+    public async Task<IActionResult> DeleteReservacion(int id)
+    {
+        var reservacion = await _context.Reservaciones.FindAsync(id);
+        if (reservacion == null) return NotFound();
+        _context.Reservaciones.Remove(reservacion);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }
